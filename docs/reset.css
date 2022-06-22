@@ -5,7 +5,7 @@
 }
 * {
   margin: 0;
-  /* -webkit-tap-highlight-color: transparent; */
+  -webkit-tap-highlight-color: transparent;
 }
 html,
 body {

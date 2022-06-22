@@ -15,8 +15,13 @@
 
       html,
       body {
-        height: 100vh;
+       
         height: var(--doc-height);
+      }
+
+      dialog::backdrop {
+        background: rgba(240, 128, 128, 0.326);
+        
       }
     </style>
   </head>
@@ -38,7 +43,7 @@
       </p>
 
       <dialog id="favDialog" style="height: 100%; margin-top: 0; margin-bottom: 0; border-style: none; max-height: 100%">
-        <form id="form" method="dialog" style="height: 100%; display: flex; flex-direction: column">
+        <div  style="height: 100%; display: flex; flex-direction: column">
           <p style="display: flex; flex-direction: column">
             <label>name</label>
             <input name="name" autofocus tabindex="0" autocomplete="off" />
@@ -79,11 +84,11 @@
             <input name="qwer" tabindex="0" autocomplete="off" />
           </p>
           <p>
-            <button value="cancel">Cancel</button>
+            <button onclick="cancelb()">Cancel</button>
 
-            <button type="submit" value="Submit">Submit</button>
+            <button onclick="submitb()">Submit</button>
           </p>
-        </form>
+        </div>
       </dialog>
       <p>
         <button id="updateDetails">Update details</button>
@@ -159,24 +164,29 @@
 <script>
   const updateButton = document.getElementById('updateDetails')
   const favDialog = document.getElementById('favDialog')
-  const form = document.getElementById('form')
+  
 
   updateButton.addEventListener('click', function onOpen() {
     if (typeof favDialog.showModal === 'function') {
       favDialog.showModal()
-      // document.body.style.setProperty('overflow-y', 'hidden')
+      document.body.style.setProperty('overflow-y', 'hidden')
     }
   })
 
   favDialog.addEventListener('close', function onClose() {
-    // document.body.style.setProperty('overflow-y', 'scroll')
+    document.body.style.setProperty('overflow-y', 'scroll')
+    console.log('close');
   })
-
-  // form.addEventListener('submit', (event) => {
-  //   event.preventDefault()
-  //   // actual logic, e.g. validate the form
-  //   console.log(event)
-  // })
+  
+  function cancelb() {
+    console.log('cancel');
+    favDialog.close()
+  }
+  
+  function submitb() {
+    console.log('submit');
+    favDialog.close()
+  }
 
   const documentHeight = () => {
     const doc = document.documentElement
