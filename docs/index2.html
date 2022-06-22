@@ -9,20 +9,21 @@
 
     <link rel="stylesheet" href="style.css" />
     <style>
-      :root {
+      /* :root {
         --doc-height: 100%;
-      }
+      } */
 
-      html,
+      /* html,
       body {
        
+        
         height: var(--doc-height);
-      }
+      } */
 
-      dialog::backdrop {
+      /* dialog::backdrop {
         background: rgba(240, 128, 128, 0.326);
         
-      }
+      } */
     </style>
   </head>
 
@@ -43,7 +44,7 @@
       </p>
 
       <dialog id="favDialog" style="height: 100%; margin-top: 0; margin-bottom: 0; border-style: none; max-height: 100%">
-        <div  style="height: 100%; display: flex; flex-direction: column">
+        <form id="form" method="dialog" style="height: 100%; display: flex; flex-direction: column">
           <p style="display: flex; flex-direction: column">
             <label>name</label>
             <input name="name" autofocus tabindex="0" autocomplete="off" />
@@ -84,11 +85,12 @@
             <input name="qwer" tabindex="0" autocomplete="off" />
           </p>
           <p>
-            <button onclick="cancelb()">Cancel</button>
+            
 
-            <button onclick="submitb()">Submit</button>
+            <button type="button" onclick="cancelb()">Cancel</button>
+            <button  type="submit">Submit</button>
           </p>
-        </div>
+        </form>
       </dialog>
       <p>
         <button id="updateDetails">Update details</button>
@@ -164,6 +166,7 @@
 <script>
   const updateButton = document.getElementById('updateDetails')
   const favDialog = document.getElementById('favDialog')
+  const form = document.getElementById('form')
   
 
   updateButton.addEventListener('click', function onOpen() {
@@ -178,6 +181,13 @@
     console.log('close');
   })
   
+  function onsub() {
+    console.log('onsub');
+
+    // ev.preventDefault()
+
+    // favDialog.close()
+  }
   function cancelb() {
     console.log('cancel');
     favDialog.close()
@@ -185,13 +195,19 @@
   
   function submitb() {
     console.log('submit');
-    favDialog.close()
+    // favDialog.close()
   }
 
-  const documentHeight = () => {
-    const doc = document.documentElement
-    doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
-  }
-  window.addEventListener('resize', documentHeight)
-  documentHeight()
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    
+    console.log(event)
+  })
+
+  // const documentHeight = () => {
+  //   const doc = document.documentElement
+  //   doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+  // }
+  // window.addEventListener('resize', documentHeight)
+  // documentHeight()
 </script>
