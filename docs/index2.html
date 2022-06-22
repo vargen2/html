@@ -18,6 +18,7 @@
     body {
       height: 100vh;
       height: var(--doc-height);
+
     }
   </style>
 
@@ -121,11 +122,13 @@
        for legacy browsers that do not support <dialog>
        could be provided here.
     */
+    document.body.style.setProperty('overflow-y', 'scroll')
   }
   // "Update details" button opens the <dialog> modally
   updateButton.addEventListener('click', function onOpen() {
     if (typeof favDialog.showModal === "function") {
       favDialog.showModal();
+      document.body.style.setProperty('overflow-y', 'hidden')
     } else {
       outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
     }
@@ -140,6 +143,7 @@
   });
 
   const documentHeight = () => {
+    
     const doc = document.documentElement
     doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
   }
