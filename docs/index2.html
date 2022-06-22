@@ -122,7 +122,7 @@
        for legacy browsers that do not support <dialog>
        could be provided here.
     */
-    document.body.style.setProperty('overflow-y', 'scroll')
+   
   }
   // "Update details" button opens the <dialog> modally
   updateButton.addEventListener('click', function onOpen() {
@@ -139,6 +139,7 @@
   });
   // "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
   favDialog.addEventListener('close', function onClose() {
+    document.body.style.setProperty('overflow-y', 'scroll')
     outputBox.value = favDialog.returnValue + " button clicked - " + (new Date()).toString();
   });
 
