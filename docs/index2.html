@@ -85,16 +85,12 @@
             <input name="qwer" tabindex="0" autocomplete="off" />
           </p>
           <p>
-            
-
             <button type="button" onclick="cancelb()">Cancel</button>
-            <button  type="submit">Submit</button>
+            <button type="submit">Submit</button>
           </p>
         </form>
       </dialog>
-      <p>
-        <button id="updateDetails">Update details</button>
-      </p>
+      <p><button id="updateDetails">Update details</button> 1</p>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
@@ -167,7 +163,6 @@
   const updateButton = document.getElementById('updateDetails')
   const favDialog = document.getElementById('favDialog')
   const form = document.getElementById('form')
-  
 
   updateButton.addEventListener('click', function onOpen() {
     if (typeof favDialog.showModal === 'function') {
@@ -178,30 +173,30 @@
 
   favDialog.addEventListener('close', function onClose() {
     document.body.style.setProperty('overflow-y', 'scroll')
-    console.log('close');
+    console.log('close')
   })
-  
+
   function onsub() {
-    console.log('onsub');
+    console.log('onsub')
 
     // ev.preventDefault()
 
     // favDialog.close()
   }
   function cancelb() {
-    console.log('cancel');
+    console.log('cancel')
     favDialog.close()
   }
-  
+
   function submitb() {
-    console.log('submit');
+    console.log('submit')
     // favDialog.close()
   }
 
-form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault()
-    
-    console.log(event)
+
+    // console.log(event)
   })
 
   // const documentHeight = () => {
