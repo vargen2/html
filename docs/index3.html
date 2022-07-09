@@ -8,11 +8,18 @@
     <link rel="stylesheet" href="reset.css" />
 
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+    <style>
+      .fixed-dialog {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+      }
+     
+    </style>
   </head>
 
   <body>
-    <main style="margin: 0px 8px">
+    <main style="margin: 0px 8px; max-width: 800px">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
         eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
@@ -110,9 +117,13 @@
         </form>
       </dialog>
 
-      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px">
-        <input id="hidescroll" type="checkbox" value="hidescroll" style="height: 32px" />
+      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
+        <input id="hidescroll" type="checkbox" value="hidescroll" />
         <label for="hidescroll">Hide scroll</label>
+      </p>
+      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
+        <input id="fixedDialogCheckbox" type="checkbox" value="fixedDialogCheckbox" />
+        <label for="fixedDialogCheckbox">Fixed dialog</label>
       </p>
 
       <p>
@@ -178,16 +189,25 @@
 </html>
 <script>
   const hideScroll = document.getElementById('hidescroll')
-
-  let isHideScroll = hideScroll.checked
-
-  hideScroll.addEventListener('click', (ev) => {
-    isHideScroll = hideScroll.checked
-  })
+  const fixedDialogCheckbox = document.getElementById('fixedDialogCheckbox')
 
   const shortButton = document.getElementById('shortButton')
   const shortDialog = document.getElementById('shortDialog')
   const shortForm = document.getElementById('shortForm')
+
+  const longButton = document.getElementById('longButton')
+  const longDialog = document.getElementById('longDialog')
+  const longForm = document.getElementById('longForm')
+
+  let isHideScroll = hideScroll.checked
+  hideScroll.addEventListener('click', (ev) => {
+    isHideScroll = ev.target.checked
+  })
+
+  fixedDialogCheckbox.addEventListener('click', (ev) => {
+    shortDialog.classList.toggle('fixed-dialog')
+    longDialog.classList.toggle('fixed-dialog')
+  })
 
   shortButton.addEventListener('click', function onOpen() {
     if (typeof shortDialog.showModal === 'function') {
@@ -212,10 +232,6 @@
     event.preventDefault()
     alert('form submit')
   })
-
-  const longButton = document.getElementById('longButton')
-  const longDialog = document.getElementById('longDialog')
-  const longForm = document.getElementById('longForm')
 
   longButton.addEventListener('click', function onOpen() {
     if (typeof longDialog.showModal === 'function') {

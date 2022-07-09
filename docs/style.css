@@ -21,26 +21,33 @@ select {
   padding: 8px 16px;
   border: 1px solid lightgray;
   border-radius: 3px;
+  outline: none;
 }
 
 /* input[type='checkbox']::before {
 content: '&#43;';
 } */
 /* button{ */
-  /* background: rgb(122, 145, 226); */
+/* background: rgb(122, 145, 226); */
 /* } */
+
+button {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: all 100ms;
+}
 
 button:hover {
   /* outline: 1px solid rgb(122, 145, 226,200); */
-  background: rgb(122, 145, 226,150);
+  /* background: rgb(122, 145, 226,150); */
 }
 
 input:not([type='checkbox']):focus,
 button:focus,
 textarea:focus,
 select:focus {
-  outline: 3px solid rgb(122, 145, 226,150);
-  border: 1px solid rgb(122, 145, 226,150);
+  /* outline: 3px solid rgb(122, 145, 226,150); */
+  /* border: 1px solid rgb(122, 145, 226,150); */
+  box-shadow: 0px 0px 0px 2px #0000ff3b;
 }
 
 dialog {
