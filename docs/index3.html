@@ -109,6 +109,12 @@
           </p>
         </form>
       </dialog>
+
+      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px">
+        <input id="hidescroll" type="checkbox" value="hidescroll" style="height: 32px" />
+        <label for="hidescroll">Hide scroll</label>
+      </p>
+
       <p>
         <button id="shortButton">short dialog</button>
       </p>
@@ -117,11 +123,6 @@
       </p>
       <p>
         <button>TEST ME</button>
-      </p>
-
-      <p style="display: flex; align-items: center">
-        <input id="bodycheckid" type="checkbox" />
-        <label for="bodycheckid">sometinhg</label>
       </p>
 
       <p>
@@ -176,6 +177,14 @@
   </body>
 </html>
 <script>
+  const hideScroll = document.getElementById('hidescroll')
+
+  let isHideScroll = hideScroll.checked
+
+  hideScroll.addEventListener('click', (ev) => {
+    isHideScroll = hideScroll.checked
+  })
+
   const shortButton = document.getElementById('shortButton')
   const shortDialog = document.getElementById('shortDialog')
   const shortForm = document.getElementById('shortForm')
@@ -183,12 +192,16 @@
   shortButton.addEventListener('click', function onOpen() {
     if (typeof shortDialog.showModal === 'function') {
       shortDialog.showModal()
-      document.body.style.setProperty('overflow-y', 'hidden')
+      if (isHideScroll) {
+        document.body.style.setProperty('overflow-y', 'hidden')
+      }
     }
   })
 
   shortDialog.addEventListener('close', function onClose() {
-    document.body.style.setProperty('overflow-y', 'scroll')
+    if (isHideScroll) {
+      document.body.style.setProperty('overflow-y', 'scroll')
+    }
   })
 
   function shortCancel() {
@@ -207,12 +220,16 @@
   longButton.addEventListener('click', function onOpen() {
     if (typeof longDialog.showModal === 'function') {
       longDialog.showModal()
-      document.body.style.setProperty('overflow-y', 'hidden')
+      if (isHideScroll) {
+        document.body.style.setProperty('overflow-y', 'hidden')
+      }
     }
   })
 
   longDialog.addEventListener('close', function onClose() {
-    document.body.style.setProperty('overflow-y', 'scroll')
+    if (isHideScroll) {
+      document.body.style.setProperty('overflow-y', 'scroll')
+    }
   })
 
   function longCancel() {
