@@ -14,7 +14,6 @@
         top: 0px;
         bottom: 0px;
       }
-     
     </style>
   </head>
 
@@ -106,6 +105,29 @@
             <label>cvb</label>
             <input id="lcvbid" autocomplete="off" />
           </p>
+
+          <div style="display: flex; flex-direction: column">
+            <div>Size</div>
+
+            <fieldset style="display: flex; flex-direction: column; row-gap: 32px">
+              <legend>Choose a size</legend>
+              <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
+                <div style="display: flex; align-items: center">
+                  <input id="xss" type="radio" name="size-choice" value="XXS" />
+                  <label for="xxs">XXS</label>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <input id="xs" type="radio" name="size-choice" value="XS" />
+                  <label for="xs">XS</label>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <input id="s" type="radio" name="size-choice" value="S" />
+                  <label for="s">S</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
           <p style="display: flex; flex-direction: column">
             <label>dfg</label>
             <input id="ldfgid" autocomplete="off" />
@@ -135,6 +157,15 @@
       <p>
         <button>TEST ME</button>
       </p>
+
+      <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+        <div>d</div>
+        <div>e</div>
+        <div>f</div>
+      </div>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea

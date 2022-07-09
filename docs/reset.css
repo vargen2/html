@@ -32,7 +32,8 @@ select {
   font: inherit;
   appearance: none;
 }
-input[type='checkbox']{
+input[type='checkbox'],
+input[type='radio'] {
   appearance: auto;
 }
 p,
