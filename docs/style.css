@@ -7,7 +7,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
 }
 
 p {
@@ -26,16 +26,21 @@ select {
 /* input[type='checkbox']::before {
 content: '&#43;';
 } */
+/* button{ */
+  /* background: rgb(122, 145, 226); */
+/* } */
 
 button:hover {
-  outline: 1px solid rgb(255, 188, 63);
+  /* outline: 1px solid rgb(122, 145, 226,200); */
+  background: rgb(122, 145, 226,150);
 }
 
 input:not([type='checkbox']):focus,
 button:focus,
 textarea:focus,
 select:focus {
-  outline: 3px solid lightcoral;
+  outline: 3px solid rgb(122, 145, 226,150);
+  border: 1px solid rgb(122, 145, 226,150);
 }
 
 dialog {
