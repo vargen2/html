@@ -27,11 +27,11 @@
         <form id="form" method="dialog" style="height: 100%; display: flex; flex-direction: column">
           <p style="display: flex; flex-direction: column">
             <label>name</label>
-            <input id="nameid" name="name" autofocus tabindex="0" autocomplete="off" />
+            <input id="nameid" autofocus autocomplete="off" />
           </p>
           <p style="display: flex; flex-direction: column">
             <label>animal</label>
-            <select id="selectid" name="animal" tabindex="0">
+            <select id="selectid">
               <option value="default">Choose...</option>
               <option>Brine shrimp</option>
               <option>Red panda</option>
@@ -41,16 +41,16 @@
 
           <p style="display: flex; flex-direction: column">
             <label>asd</label>
-            <input id="asdid" name="asd" tabindex="0" autocomplete="off" />
+            <input id="asdid" autocomplete="off" />
           </p>
           <p style="display: flex; flex-direction: column">
             <label>inputmode numberic</label>
-            <input id="numericid" name="numeric" inputmode="numeric" tabindex="0" autocomplete="off" />
+            <input id="numericid" inputmode="numeric" autocomplete="off" />
           </p>
 
           <p style="display: flex; flex-direction: column">
             <label>qwer</label>
-            <input id="qwerid" name="qwer" tabindex="0" autocomplete="off" />
+            <input id="qwerid" autocomplete="off" />
           </p>
           <p>
             <button type="button" onclick="cancelb()">Cancel</button>
@@ -149,6 +149,7 @@
 
   form.addEventListener('submit', (event) => {
     event.preventDefault()
+    alert('form submit')
     // favDialog.close()
     // console.log(event)
   })

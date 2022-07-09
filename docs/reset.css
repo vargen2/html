@@ -32,6 +32,9 @@ select {
   font: inherit;
   appearance: none;
 }
+input[type='checkbox']{
+  appearance: auto;
+}
 p,
 h1,
 h2,
