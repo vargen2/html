@@ -14,208 +14,304 @@
         top: 0px;
         bottom: 0px;
       }
+
+      .details {
+        position: relative;
+      }
+
+      .summary {
+        appearance: none;
+        display: inline-block;
+      }
+
+      details[open] > .summary::before {
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.152);
+        content: ' ';
+        pointer-events: auto;
+      }
+
+      .details-summary {
+        z-index: 20;
+        position: fixed;
+        top: 10%;
+        height: 80%;
+        left: 16px;
+        right: 16px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .details-summary-item {
+        padding: 16px;
+      }
+      .details-summary-item:hover {
+        background: rgb(255, 203, 203);
+      }
+
+      @media (min-width: 576px) {
+        details[open] > .summary::before {
+          background: transparent;
+        }
+        .details-summary {
+          position: absolute;
+          top: none;
+          height: none;
+          left: none;
+          right: 0px;
+          height: auto;
+          max-height: 500px;
+          width: 300px;
+          margin-top: 4px;
+          margin-bottom: 20px;
+          overflow: hidden;
+
+          box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.142);
+        }
+      }
     </style>
   </head>
 
   <body>
-    <main style="margin: 0px 8px; max-width: 800px">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
+    <div style="height: 100%; overflow-y: auto;">
+      <main style="margin: 0px 8px; max-width: 800px">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
 
-      <dialog id="shortDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
-        <form id="shortForm" method="dialog" style="display: flex; flex-direction: column">
-          <p style="display: flex; flex-direction: column">
-            <label>name</label>
-            <input id="nameid" autofocus autocomplete="off" />
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>animal</label>
-            <select id="selectid">
-              <option value="default">Choose...</option>
-              <option>Brine shrimp</option>
-              <option>Red panda</option>
-              <option>Spider monkey</option>
-            </select>
-          </p>
+        <dialog id="shortDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
+          <form id="shortForm" method="dialog" style="display: flex; flex-direction: column">
+            <p style="display: flex; flex-direction: column">
+              <label>name</label>
+              <input id="nameid" autofocus autocomplete="off" />
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>animal</label>
+              <select id="selectid">
+                <option value="default">Choose...</option>
+                <option>Brine shrimp</option>
+                <option>Red panda</option>
+                <option>Spider monkey</option>
+              </select>
+            </p>
 
-          <p style="display: flex; flex-direction: column">
-            <label>asd</label>
-            <input id="asdid" autocomplete="off" />
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>inputmode numberic</label>
-            <input id="numericid" inputmode="numeric" autocomplete="off" />
-          </p>
+            <p style="display: flex; flex-direction: column">
+              <label>asd</label>
+              <input id="asdid" autocomplete="off" />
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>inputmode numberic</label>
+              <input id="numericid" inputmode="numeric" autocomplete="off" />
+            </p>
 
-          <p style="display: flex; flex-direction: column">
-            <label>qwer</label>
-            <input id="qwerid" autocomplete="off" />
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>fghj</label>
-            <input id="fghjid" autocomplete="off" />
-          </p>
-          <p>
-            <button type="button" onclick="shortCancel()">Cancel</button>
-            <button type="submit">Submit</button>
-          </p>
-        </form>
-      </dialog>
-      <dialog id="longDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
-        <form id="longForm" method="dialog" style="display: flex; flex-direction: column; row-gap: 32px">
-          <p style="display: flex; flex-direction: column">
-            <label>name</label>
-            <input id="lnameid" autofocus autocomplete="off" />
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>animal</label>
-            <select id="lselectid">
-              <option value="default">Choose...</option>
-              <option>Brine shrimp</option>
-              <option>Red panda</option>
-              <option>Spider monkey</option>
-            </select>
-          </p>
+            <p style="display: flex; flex-direction: column">
+              <label>qwer</label>
+              <input id="qwerid" autocomplete="off" />
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>fghj</label>
+              <input id="fghjid" autocomplete="off" />
+            </p>
+            <p>
+              <button type="button" onclick="shortCancel()">Cancel</button>
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </dialog>
+        <dialog id="longDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
+          <form id="longForm" method="dialog" style="display: flex; flex-direction: column; row-gap: 32px">
+            <p style="display: flex; flex-direction: column">
+              <label>name</label>
+              <input id="lnameid" autofocus autocomplete="off" />
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>animal</label>
+              <select id="lselectid">
+                <option value="default">Choose...</option>
+                <option>Brine shrimp</option>
+                <option>Red panda</option>
+                <option>Spider monkey</option>
+              </select>
+            </p>
 
-          <p style="display: flex; flex-direction: column">
-            <label>asd</label>
-            <input id="lasdid" autocomplete="off" />
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>inputmode numberic</label>
-            <input id="lnumericid" inputmode="numeric" autocomplete="off" />
-          </p>
+            <p style="display: flex; flex-direction: column">
+              <label>asd</label>
+              <input id="lasdid" autocomplete="off" />
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>inputmode numberic</label>
+              <input id="lnumericid" inputmode="numeric" autocomplete="off" />
+            </p>
 
-          <p style="display: flex; flex-direction: column">
-            <label>qwer</label>
-            <input id="lqwerid" autocomplete="off" />
-          </p>
-          <p style="display: flex; align-items: center">
-            <input id="checkid" type="checkbox" />
-            <label for="checkid">sometinhg</label>
-          </p>
-          <p style="display: flex; flex-direction: column">
-            <label>cvb</label>
-            <input id="lcvbid" autocomplete="off" />
-          </p>
+            <p style="display: flex; flex-direction: column">
+              <label>qwer</label>
+              <input id="lqwerid" autocomplete="off" />
+            </p>
+            <p style="display: flex; align-items: center">
+              <input id="checkid" type="checkbox" />
+              <label for="checkid">sometinhg</label>
+            </p>
+            <p style="display: flex; flex-direction: column">
+              <label>cvb</label>
+              <input id="lcvbid" autocomplete="off" />
+            </p>
 
-          <div style="display: flex; flex-direction: column">
-            <div>Size</div>
+            <div style="display: flex; flex-direction: column">
+              <div>Size</div>
 
-            <fieldset style="display: flex; flex-direction: column; row-gap: 32px">
-              <legend>Choose a size</legend>
-              <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
-                <div style="display: flex; align-items: center">
-                  <input id="xss" type="radio" name="size-choice" value="XXS" />
-                  <label for="xxs">XXS</label>
+              <fieldset style="display: flex; flex-direction: column; row-gap: 32px">
+                <legend>Choose a size</legend>
+                <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
+                  <div style="display: flex; align-items: center">
+                    <input id="xss" type="radio" name="size-choice" value="XXS" />
+                    <label for="xxs">XXS</label>
+                  </div>
+                  <div style="display: flex; align-items: center">
+                    <input id="xs" type="radio" name="size-choice" value="XS" />
+                    <label for="xs">XS</label>
+                  </div>
+                  <div style="display: flex; align-items: center">
+                    <input id="s" type="radio" name="size-choice" value="S" />
+                    <label for="s">S</label>
+                  </div>
                 </div>
-                <div style="display: flex; align-items: center">
-                  <input id="xs" type="radio" name="size-choice" value="XS" />
-                  <label for="xs">XS</label>
-                </div>
-                <div style="display: flex; align-items: center">
-                  <input id="s" type="radio" name="size-choice" value="S" />
-                  <label for="s">S</label>
-                </div>
+              </fieldset>
+            </div>
+
+            <p style="display: flex; flex-direction: column">
+              <label>dfg</label>
+              <input id="ldfgid" autocomplete="off" />
+            </p>
+            <p>
+              <button type="button" onclick="longCancel()">Cancel</button>
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </dialog>
+
+        <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
+          <input id="hidescroll" type="checkbox" value="hidescroll" />
+          <label for="hidescroll">Hide scroll</label>
+        </p>
+        <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
+          <input id="fixedDialogCheckbox" type="checkbox" value="fixedDialogCheckbox" />
+          <label for="fixedDialogCheckbox">Fixed dialog</label>
+        </p>
+
+        <p>
+          <button id="shortButton">short dialog</button>
+        </p>
+        <p>
+          <button id="longButton">long dialog</button>
+        </p>
+        <p>
+          <button>TEST ME</button>
+        </p>
+        <p>
+          <details class="details">
+            <summary class="summary">Details</summary>
+
+            <details-summary id="detailsSummary" class="details-summary">
+              <div>header</div>
+              <div>filter</div>
+              <div style="overflow: auto">
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
+                <div class="details-summary-item">content 1</div>
               </div>
-            </fieldset>
-          </div>
+            </details-summary>
+          </details>
+        </p>
 
-          <p style="display: flex; flex-direction: column">
-            <label>dfg</label>
-            <input id="ldfgid" autocomplete="off" />
-          </p>
-          <p>
-            <button type="button" onclick="longCancel()">Cancel</button>
-            <button type="submit">Submit</button>
-          </p>
-        </form>
-      </dialog>
+        <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
+          <div>a</div>
+          <div>b</div>
+          <div>c</div>
+          <div>d</div>
+          <div>e</div>
+          <div>f</div>
+        </div>
 
-      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
-        <input id="hidescroll" type="checkbox" value="hidescroll" />
-        <label for="hidescroll">Hide scroll</label>
-      </p>
-      <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
-        <input id="fixedDialogCheckbox" type="checkbox" value="fixedDialogCheckbox" />
-        <label for="fixedDialogCheckbox">Fixed dialog</label>
-      </p>
-
-      <p>
-        <button id="shortButton">short dialog</button>
-      </p>
-      <p>
-        <button id="longButton">long dialog</button>
-      </p>
-      <p>
-        <button>TEST ME</button>
-      </p>
-
-      <div style="display: grid; gap: 32px; grid-template-columns: auto auto auto">
-        <div>a</div>
-        <div>b</div>
-        <div>c</div>
-        <div>d</div>
-        <div>e</div>
-        <div>f</div>
-      </div>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p style="background: lightblue">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p style="background: lightcoral">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-        eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-      </p>
-    </main>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p style="background: lightblue">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p style="background: lightcoral">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
+          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
+        </p>
+      </main>
+    </div>
   </body>
 </html>
 <script>
@@ -229,6 +325,8 @@
   const longButton = document.getElementById('longButton')
   const longDialog = document.getElementById('longDialog')
   const longForm = document.getElementById('longForm')
+
+  const detailsSummary = document.getElementById('detailsSummary')
 
   let isHideScroll = hideScroll.checked
   hideScroll.addEventListener('click', (ev) => {
@@ -286,5 +384,10 @@
   longForm.addEventListener('submit', (event) => {
     event.preventDefault()
     alert('form submit')
+  })
+
+  detailsSummary.addEventListener('click', (ev) => {
+    detailsSummary.parentElement.removeAttribute('open')
+    console.log(detailsSummary.parentElement)
   })
 </script>
