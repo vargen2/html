@@ -24,7 +24,24 @@
         display: inline-block;
       }
 
-      details[open] > .summary::before {
+      .blocker {
+        display: none;
+      }
+
+      body.block-scroll > div > .blocker {
+        z-index: 8;
+        position: fixed;
+        display: block;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(221, 65, 65, 0.74);
+
+        pointer-events: auto;
+      }
+
+      /* details[open] > .summary::before {
         z-index: 10;
         position: fixed;
         top: 0;
@@ -33,8 +50,8 @@
         left: 0;
         background: rgba(0, 0, 0, 0.152);
         content: ' ';
-        pointer-events: auto;
-      }
+        
+      } */
 
       .details-summary {
         z-index: 20;
@@ -56,6 +73,9 @@
       }
 
       @media (min-width: 576px) {
+        body.block-scroll > div > .blocker {
+          display: none;
+        }
         details[open] > .summary::before {
           background: transparent;
         }
@@ -79,7 +99,8 @@
   </head>
 
   <body>
-    <div style="height: 100%; overflow-y: auto;">
+    <div style="height: 100%; overflow-y: auto">
+      <div class="blocker"></div>
       <main style="margin: 0px 8px; max-width: 800px">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
@@ -91,7 +112,7 @@
           eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
         </p>
 
-        <dialog id="shortDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
+        <dialog id="shortDialog" style="margin-top: 0; margin-bottom: 0; border-style: none">
           <form id="shortForm" method="dialog" style="display: flex; flex-direction: column">
             <p style="display: flex; flex-direction: column">
               <label>name</label>
@@ -130,7 +151,7 @@
             </p>
           </form>
         </dialog>
-        <dialog id="longDialog" style="min-height: 100%; margin-top: 0; margin-bottom: 0; border-style: none">
+        <dialog id="longDialog" style="margin-top: 0; margin-bottom: 0; border-style: none">
           <form id="longForm" method="dialog" style="display: flex; flex-direction: column; row-gap: 32px">
             <p style="display: flex; flex-direction: column">
               <label>name</label>
@@ -220,7 +241,7 @@
           <button>TEST ME</button>
         </p>
         <p>
-          <details class="details">
+          <details id="details" class="details">
             <summary class="summary">Details</summary>
 
             <details-summary id="detailsSummary" class="details-summary">
@@ -326,6 +347,7 @@
   const longDialog = document.getElementById('longDialog')
   const longForm = document.getElementById('longForm')
 
+  const details = document.getElementById('details')
   const detailsSummary = document.getElementById('detailsSummary')
 
   let isHideScroll = hideScroll.checked
@@ -386,6 +408,13 @@
     alert('form submit')
   })
 
+  details.addEventListener('toggle', (ev) => {
+    if (details.hasAttribute('open')) {
+      document.body.classList.add('block-scroll')
+    } else {
+      document.body.classList.remove('block-scroll')
+    }
+  })
   detailsSummary.addEventListener('click', (ev) => {
     detailsSummary.parentElement.removeAttribute('open')
     console.log(detailsSummary.parentElement)
