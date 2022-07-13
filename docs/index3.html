@@ -50,7 +50,7 @@
         pointer-events: auto;
       }
 
-      /* details[open] > .summary::before {
+      details[open] > .summary::before {
         z-index: 10;
         position: fixed;
         top: 0;
@@ -59,8 +59,7 @@
         left: 0;
         background: rgba(0, 0, 0, 0.152);
         content: ' ';
-        
-      } */
+      }
 
       .details-summary {
         z-index: 20;
@@ -91,12 +90,13 @@
         }
         .details-summary {
           position: absolute;
-          top: none;
-          height: none;
-          left: none;
+          top: unset;
+          bottom: unset;
+
+          left: 0px;
           right: 0px;
-          height: auto;
-          max-height: 500px;
+          height: 500px;
+          
           width: 300px;
           margin-top: 4px;
           margin-bottom: 20px;
