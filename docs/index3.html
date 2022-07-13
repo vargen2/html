@@ -5,10 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="reset.css" />
 
     <link rel="stylesheet" href="style.css" />
     <style>
+      .f1 {
+        font-family: monospace;
+        font-size: 1rem;
+      }
+
+      .lato {
+        font-family: Lato;
+      }
+
+      .mini-label {
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
       .fixed-dialog {
         position: fixed;
         top: 0px;
@@ -102,15 +119,41 @@
     <div style="height: 100%; overflow-y: auto">
       <div class="blocker"></div>
       <main style="margin: 0px 8px; max-width: 800px">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-        </p>
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">Nothing</div>
+          <div>1500.500 iiii Lorem ipsum dolor. 1234567</div>
+          <div>2111.110 mmmm Saepe repellat vita.......</div>
+        </div>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellat vitae illum natus laborum nisi et quod sed aperiam iure ea
-          eos corrupti, ipsam architecto rem quae neque nostrum quisquam.
-        </p>
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">font-variant-numeric: tabular-nums</div>
+          <div style="font-variant-numeric: tabular-nums">1500.500 iiii Lorem ipsum dolor. 1234567</div>
+          <div style="font-variant-numeric: tabular-nums">2111.110 mmmm Saepe repellat vita.......</div>
+        </div>
+
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">lato</div>
+          <div class="lato">1500.500 iiii Lorem ipsum dolor. 1234567</div>
+          <div class="lato">2111.110 mmmm Saepe repellat vita.......</div>
+        </div>
+
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">font-family: monospace; font-size: 1rem;</div>
+          <div class="f1">1500.500 iiii Lorem ipsum dolor. 1234567</div>
+          <div class="f1">2111.110 mmmm Saepe repellat vita.......</div>
+        </div>
+
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">pre 16px</div>
+          <pre style="font-size: 16px">1500.500 iiii Lorem ipsum dolor. 1234567</pre>
+          <pre style="font-size: 16px">2111.110 mmmm Saepe repellat vita.......</pre>
+        </div>
+
+        <div style="margin: 0px 0px 12px 0px">
+          <div class="mini-label">pre lato 16px</div>
+          <pre style="font-family: Lato; font-size: 16px">1500.500 iiii Lorem ipsum dolor. 1234567</pre>
+          <pre style="font-family: Lato; font-size: 16px">2111.110 mmmm Saepe repellat vita.......</pre>
+        </div>
 
         <dialog id="shortDialog" style="margin-top: 0; margin-bottom: 0; border-style: none">
           <form id="shortForm" method="dialog" style="display: flex; flex-direction: column">
