@@ -45,7 +45,8 @@
         right: 0;
         left: 0;
         background: rgba(221, 65, 65, 0.74);
-
+        margin-top: -100px;
+        margin-bottom: -100px;
         pointer-events: auto;
       }
 
@@ -63,8 +64,8 @@
       .details-summary {
         z-index: 20;
         position: fixed;
-        top: 80px;
-        bottom: 80px;
+        top: 160px;
+        bottom: 160px;
         /* height: 80%; */
         left: 16px;
         right: 16px;
@@ -256,8 +257,8 @@
           <label for="hidescroll">Hide scroll</label>
         </p>
         <p style="display: flex; align-items: center; column-gap: 8px; height: 32px; line-height: 32px">
-          <input id="fixedDialogCheckbox" type="checkbox" value="fixedDialogCheckbox" />
-          <label for="fixedDialogCheckbox">Fixed dialog</label>
+          <input id="blockerCheckbox" type="checkbox" value="blockerCheckbox" />
+          <label for="blockerCheckbox">red blocker overlay</label>
         </p>
 
         <p>
@@ -381,7 +382,7 @@
 </html>
 <script>
   const hideScroll = document.getElementById('hidescroll')
-  const fixedDialogCheckbox = document.getElementById('fixedDialogCheckbox')
+  const blockerCheckbox = document.getElementById('blockerCheckbox')
 
   const shortButton = document.getElementById('shortButton')
   const shortDialog = document.getElementById('shortDialog')
@@ -400,11 +401,6 @@
   let isHideScroll = hideScroll.checked
   hideScroll.addEventListener('click', (ev) => {
     isHideScroll = ev.target.checked
-  })
-
-  fixedDialogCheckbox.addEventListener('click', (ev) => {
-    shortDialog.classList.toggle('fixed-dialog')
-    longDialog.classList.toggle('fixed-dialog')
   })
 
   shortButton.addEventListener('click', function onOpen() {
@@ -456,7 +452,7 @@
   })
 
   details.addEventListener('toggle', (ev) => {
-    if (details.hasAttribute('open')) {
+    if (details.hasAttribute('open') && blockerCheckbox.checked) {
       document.body.classList.add('block-scroll')
     } else {
       document.body.classList.remove('block-scroll')
@@ -467,7 +463,8 @@
   })
 
   detailsShort.addEventListener('toggle', (ev) => {
-    if (detailsShort.hasAttribute('open')) {
+    if (detailsShort.hasAttribute('open') && blockerCheckbox.checked) {
+      console.log('hot');
       document.body.classList.add('block-scroll')
     } else {
       document.body.classList.remove('block-scroll')
